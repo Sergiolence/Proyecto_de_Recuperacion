@@ -70,9 +70,4 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    fun showRecycler(){
-        recyclerView.layoutManager = GridLayoutManager(this,2);
-        val adapter : RecyclerViewAdapter = RecyclerViewAdapter(llistat, this);
-        recyclerView.adapter = adapter
-    }
 }

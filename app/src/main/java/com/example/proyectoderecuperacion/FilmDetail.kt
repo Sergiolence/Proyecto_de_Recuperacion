@@ -3,11 +3,13 @@ package com.example.proyectoderecuperacion
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.proyectoderecuperacion.models.Film
 import com.google.firebase.database.DataSnapshot
@@ -17,6 +19,7 @@ import com.google.firebase.database.ValueEventListener
 
 class FilmDetail : AppCompatActivity() {
     private lateinit var button: Button
+    private lateinit var favButton: Button
     private lateinit var deleteButton: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +34,7 @@ class FilmDetail : AppCompatActivity() {
         val overviewTextView = findViewById<TextView>(R.id.summaryContent)
         val releaseDateTextView = findViewById<TextView>(R.id.dateContent)
         button = findViewById<Button>(R.id.button2)
+        favButton = findViewById<Button>(R.id.favFilmButton)
         deleteButton = findViewById<Button>(R.id.deleteButton)
 
         Glide.with(this).load("https://image.tmdb.org/t/p/w200/"+film.poster_path).into(posterImageView)
@@ -40,6 +44,7 @@ class FilmDetail : AppCompatActivity() {
         releaseDateTextView.text = film.release_date.toString()
 
         button.isEnabled = false
+        favButton.visibility = View.GONE
         checkFilmExistence(film)
 
         // Personaliza la apariencia de la actividad
@@ -60,7 +65,22 @@ class FilmDetail : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     // La peli existe
+                    favButton.visibility = View.VISIBLE
+                    deleteButton.isEnabled = true
                     button.isEnabled = false
+                    favButton.setOnClickListener {
+                        if(film.favorita == false) {
+                            film.favorita = true
+                            favButton.setBackgroundColor(ContextCompat.getColor(this@FilmDetail, R.color.black))
+                        }
+                        else {
+                            film.favorita = false
+                            favButton.setBackgroundColor(ContextCompat.getColor(this@FilmDetail, R.color.orange1))
+                        }
+                        val newFilmRef = FirebaseDatabase.getInstance().getReference("/films/"+film.id)
+                        newFilmRef.setValue(film)
+                        newFilmRef.push()
+                    }
                     deleteButton.setOnClickListener {
                         val builder = AlertDialog.Builder(this@FilmDetail)
                         builder.setTitle("Eliminar película")
@@ -85,7 +105,9 @@ class FilmDetail : AppCompatActivity() {
 
                 } else {
                     // La peli no existe en firebase
+
                     button.isEnabled = true
+                    deleteButton.isEnabled = false
                     button.setOnClickListener {
                         val newFilm = Film()
                         newFilm.id = film.id
@@ -94,6 +116,7 @@ class FilmDetail : AppCompatActivity() {
                         newFilm.release_date = film.release_date
                         newFilm.overview = film.overview
                         newFilm.vote_average = film.vote_average
+                        newFilm.favorita = film.favorita
                         val newFilmRef = FirebaseDatabase.getInstance().getReference("/films/"+newFilm.id)
                         newFilmRef.setValue(film)
                         newFilmRef.push()
