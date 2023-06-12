@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         filmsRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
+                    llistat.clear()
                     for (filmSnapshot in dataSnapshot.children) {
                         val film = filmSnapshot.getValue(Film::class.java)
                         if (film != null) {
