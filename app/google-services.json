@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "654456928761",
+    "project_id": "proyecto-recuperacion-81b2b",
+    "storage_bucket": "proyecto-recuperacion-81b2b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:654456928761:android:6150a58a0c23fb719ae528",
+        "android_client_info": {
+          "package_name": "com.example.proyectoderecuperacion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "654456928761-q4iv2a26hp91p3bva7aeefee2t9s67ug.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.proyectoderecuperacion",
+            "certificate_hash": "e8e4c3b08b7c5f9480cd09d275540e8980dcb47a"
+          }
+        },
+        {
+          "client_id": "654456928761-20kgs1fuh3b9uui2malobcqc9o7gebvu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjN8UFpAC89UBHRvCb2k_r3eibnxjrczs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "654456928761-20kgs1fuh3b9uui2malobcqc9o7gebvu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

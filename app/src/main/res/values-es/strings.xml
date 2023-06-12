@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--LOG IN-->
+    <string name="app_name">Recuperacion</string>
+    <string name="introduce_email">Correo electronico</string>
+    <string name="introduce_password">Contrasena</string>
+    <string name="login_bttn">Inicia sesion</string>
+    <string name="other_login">Inicia sesion tambien con</string>
+
+    <string name="my_cart_icon">My cart</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="summary">Sinopsis</string>
+    <string name="genres">Géneros</string>
+    <string name="release_date">Fecha de estreno</string>
+</resources>
