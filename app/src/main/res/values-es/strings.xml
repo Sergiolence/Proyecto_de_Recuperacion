@@ -10,6 +10,6 @@
     <string name="my_cart_icon">My cart</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="summary">Sinopsis</string>
-    <string name="genres">Géneros</string>
+    <string name="votes">Puntuación</string>
     <string name="release_date">Fecha de estreno</string>
 </resources>

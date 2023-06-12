@@ -6,16 +6,13 @@ import java.io.Serializable
 
 @Parcelize
 data class Film(
-    var genre: List<Genre>? = null,
+    var vote_average: Double = 0.0,
     var id: Int = 0,
     var overview: String? = "",
     var poster_path: String? = "",
     var release_date: String? = "",
-    var title: String? = ""
+    var title: String? = "",
+    var favorita: Boolean? = false
 ) : Serializable, Parcelable {
 
-    @Parcelize
-    data class Genre(
-        var name: String? = ""
-    ) : Parcelable
 }
